@@ -107,48 +107,41 @@
     </ul>
   </div>
 </nav>
-<div class="container login-container">
-  <div class="row">
-  
-    <div class="col-md-6 login-form">
-      <div class="signup-form">
-    <h2>Signup</h2>
-    <form action="UserServlet" method="post">
-      <div class="form-group">
-        <label for="fullname">Full Name:</label>
-        <input type="text" name="fullname" id="fullname" class="form-control" placeholder="Enter your full name" required>
-      </div>
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" class="form-control" placeholder="Enter your email" required>
-      </div>
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password" required>
-      </div>
-   
-      <button type="submit" class="btn btn-primary">Signup</button>
-      
-            <div class="form-group">
-      <span>Have Account</span>  <a href="index.jsp"> Login</a>
-        
-      </div>
-    </form>
+<div class="container mt-5">
+        <h1>Student Application Form</h1>
+        <form action="ApplicantServlet" method="post">
+            <div class="mb-3">
+                <label for="fullName" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="fullName" name="fullName" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="dob" class="form-label">Date of Birth</label>
+                <input type="date" class="form-control" id="dob" name="dob" required>
+            </div>
+            <div class="mb-3">
+                <label for="gender" class="form-label">Gender</label>
+                <select class="form-select" id="gender" name="gender" required>
+                    <option value="" disabled selected>Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="course" class="form-label">Course</label>
+                <input type="text" class="form-control" id="course" name="course" required>
+            </div>
+            <div class="mb-3">
+                <label for="address" class="form-label">Address</label>
+                <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
     </div>
-  </div>
-
-      <div class="col-md-6 applicant-image">
-
-       
-      <img src="https://img.freepik.com/free-vector/sign-page-abstract-concept-illustration-enter-application-mobile-screen-user-login-form-website-page-interface-ui-new-profile-registration-email-account_335657-936.jpg?w=740&t=st=1691279188~exp=1691279788~hmac=0b142eba6440d044f73f762076f3a386067ebada2237da57835239f9837575e4" alt="Applicant Image">
-   
-</div>
-      
-      
-   
-      </div>
-  </div>
-</div>
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
