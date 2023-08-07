@@ -42,27 +42,34 @@ public class UserLogin extends HttpServlet {
 		ConnectDB db=new ConnectDB();
 		db.getCon();
 	
-		
-		
-	ResultSet result=db.getUser(loguser1);
+		ResultSet result = db.getUser(loguser1);
 
-		if(result!=null) {
-			try {
-				if(result.next()) {
-			String	userRole=result.getString("Role");			
-				if(userRole.equals("admin")) {
-					response.sendRedirect("admin.jsp");
-				}else {
-					response.sendRedirect("userDashboard.jsp");
-				}
-				}
-			} catch (SQLException e) {
-				response.sendRedirect("index.jsp");
-				e.printStackTrace();
-			}
-			}
-		
-		
+		try {
+		    if (result != null && result.next()) {
+		        String userRole = result.getString("Role");
+		        
+		        if (userRole.equals("admin")) {
+		            response.sendRedirect("admin.jsp");
+		        } else {
+		            response.sendRedirect("userDashboard.jsp");
+		        }
+		    } else {
+		        response.sendRedirect("index.jsp");
+		    }
+		} catch (SQLException e) {
+		    e.printStackTrace();
+		} finally {
+		    // Close the ResultSet and database connection
+		    if (result != null) {
+		        try {
+		            result.close();
+		        } catch (SQLException e) {
+		            e.printStackTrace();
+		        }
+		    }
+		  
+		}
+
 	}
 
 }

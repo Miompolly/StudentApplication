@@ -19,8 +19,7 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
-   <servlet>
+  <servlet>
     <description></description>
     <display-name>UserLogin</display-name>
     <servlet-name>UserLogin</servlet-name>
@@ -30,6 +29,5 @@
     <servlet-name>UserLogin</servlet-name>
     <url-pattern>/UserLogin</url-pattern>
   </servlet-mapping>
- 
- 
+  
 </web-app>

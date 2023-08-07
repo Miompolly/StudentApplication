@@ -11,10 +11,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="style.css">
- <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-   
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <style>
 
 
@@ -27,7 +27,7 @@
 }
 
 
-label{
+nav label{
     color: white;
     font-size: 25px;
     padding-top: 25px;
@@ -67,7 +67,7 @@ background-color: #f5f5f5;
 }
 
 .container {
-max-width: 900px;
+max-width: 800px;
 margin: 50px auto;
 padding: 20px;
 background-color: #ffffff;
@@ -105,16 +105,7 @@ background-color: #e0e0e0;
 cursor: pointer;
 }
 
-.reply-button {
-    padding: 5px 10px;
-    margin-right: 5px;
-    border: none;
-    cursor: pointer;
-    color: #fff;
-    font-size: 14px;
-    border-radius: 5px;
-}
-.delete-button {
+.reply-button, .delete-button {
     padding: 5px 10px;
     margin-right: 5px;
     border: none;
@@ -131,13 +122,14 @@ cursor: pointer;
 .delete-button {
     background-color: #e74c3c;
 }
-
+input{
+padding: 1rem;}
 </style> </head>
 <body>
 
        <div class="nav2">
         <div class="up"> 
-        <div class="rightbar"> <label for="">DevLearn ADMINDashboard</label></div> 
+        <div class="rightbar"> <label for="">DevLearn</label></div> 
         <div class="rightbar"> <label for=""><a href="index.jsp">Logout</a></label></div> 
         </div>
  <div class="hed">
@@ -150,58 +142,36 @@ cursor: pointer;
  
  </div>
   <div class="rightBody" style="width: 80%;height: 90vh;">
+  
   <div class="container">
-        <h1>Applicant List</h1>
-        <table class="user-table">
-            <tr>
-                <th>ID</th>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>DOB</th>
-                <th>Gender</th>
-                <th>Course</th>
-
-                <th>Review</th>
-                 <th>Actions</th>
-            </tr>
+       <div class="signup-form">
+    <h2>Add User</h2>
+    <form action="UserServlet" method="post">
+      <div class="form-group">
+        <label for="fullname">Full Name:</label>
+        <input type="text" name="fullname" id="fullname" class="form-control" placeholder="Enter User full name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" class="form-control" placeholder="Enter User email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" class="form-control" placeholder="Enter User password" required>
+      </div>
+        <div class="form-group">
+        <label for="password">Role:</label>
+        <input type="text" name="role" id="role" class="form-control" placeholder="Enter User Role" required>
+      </div>
    
-           <%
-try {
-    ConnectDB db = new ConnectDB();
-    db.getCon();
-    ResultSet rs = db.getAllApplicants();
-    while (rs.next()) {
-        int Id = rs.getInt("ID");
-        String fullname = rs.getString("full_name");
-        String email = rs.getString("email");
-        String address = rs.getString("address");
-        String dob = rs.getString("dob");
-        String gender = rs.getString("gender");
-        String course = rs.getString("course");
-        String review = rs.getString("review");
-%>
-        <tr>
-            <td><%= Id %></td>
-            <td><%= fullname %></td>
-            <td><%= email %></td>
-            <td><%= dob %></td>
-              <td><%= gender %></td>
-            <td><%= course %></td>
-     
-            <td><%= review %></td>
-            <td>
-               <a href="editApplicant.jsp?Id=<%= Id %>&review=<%= review %>"> <button class="reply-button">Reply</button></a>
-                  <a href="deleteApplicant.jsp?Id=<%= Id %>"><button class="delete-button">Delete</button></a>
-            </td>
-        </tr>
-<% 
-    }
-   } catch (Exception e) {
-    e.printStackTrace();
-   }
-%>
-        </table>
+      <button type="submit" class="btn btn-primary">Add </button>
+
+    </form>
     </div>
+      
+      
+    </div>
+  
   
   </div>
  </div>
@@ -213,6 +183,9 @@ try {
 
   
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
 
   
 </body>

@@ -185,5 +185,104 @@ public class ConnectDB {
 	    return row;
 	}
 
+	public String updateApplicant(int ID,String review) {
+		String mssg="Success";
+		   loadDriver();
+		 Connection cnx =getCon();
+		 String sql="UPDATE applicants SET Review=? WHERE ID=?";
+		 try {
+			PreparedStatement stmt = cnx.prepareStatement(sql);
+			stmt.setInt(2, ID);
+			stmt.setString(1, review);
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		return mssg;
+		
+	}
 	
+
+	
+	public boolean deleteApplicant(int Id) {
+	    loadDriver();
+	    Connection cnx = getCon();
+	    
+	    String sql = "DELETE FROM applicants WHERE ID=?";
+	    try {
+	        PreparedStatement stm = cnx.prepareStatement(sql);
+	        stm.setLong(1, Id);
+	        int rowsAffected = stm.executeUpdate();
+	        if (rowsAffected > 0) {
+	            return true; 
+	        }
+	    } catch (SQLException e) {
+	        System.out.println("Failed to delete " + e.getMessage());
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            cnx.close();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    return false; 
+	}
+
+	public String updateUser(String fullname,String email,String role,int ID) {
+		String mssg="Success";
+		   loadDriver();
+		 Connection cnx =getCon();
+		 String sql="UPDATE users SET FullName=?,email=?,role=? WHERE ID=?";
+		 try {
+			PreparedStatement stmt = cnx.prepareStatement(sql);
+			stmt.setString(1, fullname);
+			stmt.setString(2, email);
+			stmt.setString(3, role);
+			stmt.setInt(4, ID);
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		return mssg;
+		
+	}
+	
+	public String addUser2(addUser user1) {
+	    String message = "Created Successfully";
+
+	    loadDriver();
+	    Connection cnx = getCon();
+
+	    if (isEmailRegistered(user1.getEmail())) {
+	    	 message="User Already Exist";
+	    } else {
+	    	  String sql = "INSERT INTO users (FullName, email, password,role) VALUES (?, ?, ?,?)";
+		        try {
+		            PreparedStatement stm = cnx.prepareStatement(sql);
+		            stm.setString(1, user1.getFullname());
+		            stm.setString(2, user1.getEmail());
+
+		            String hashedPassword = hashMD5(user1.getPassword()); 
+		            stm.setString(3, hashedPassword); 
+		            stm.setString(4, user1.getRole());
+		            
+		            int rs = stm.executeUpdate();
+
+		            if (rs > 0) {
+		                message = "User Created Successfully";
+		            } else {
+		                message = "User not Created !!! Try again";
+		            }
+		        } catch (SQLException e) {
+		            e.printStackTrace();
+		            message = "User not created, " + e.getMessage();
+		        }
+	    }
+	    return message;
+	}
+
 }

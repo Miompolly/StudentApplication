@@ -11,11 +11,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="style.css">
- <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <style>
 
 
@@ -28,7 +27,7 @@
 }
 
 
-label{
+nav label{
     color: white;
     font-size: 25px;
     padding-top: 25px;
@@ -123,12 +122,14 @@ cursor: pointer;
 .delete-button {
     background-color: #e74c3c;
 }
+input{
+padding: 1rem;}
 </style> </head>
 <body>
 
        <div class="nav2">
         <div class="up"> 
-        <div class="rightbar"> <label for="">DevLearn AdminDashboard</label></div> 
+        <div class="rightbar"> <label for="">DevLearn</label></div> 
         <div class="rightbar"> <label for=""><a href="index.jsp">Logout</a></label></div> 
         </div>
  <div class="hed">
@@ -143,44 +144,34 @@ cursor: pointer;
   <div class="rightBody" style="width: 80%;height: 90vh;">
   
   <div class="container">
-        <h1>User List</h1>
-        <table class="user-table">
-            <tr>
-                <th>ID</th>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Role</th>
-                <th>ACtions</th>
-           <%
-try {
-    ConnectDB db = new ConnectDB();
-    db.getCon();
-    ResultSet rs = db.getAllUsers();
-    while (rs.next()) {
-        int Id = rs.getInt("ID");
-        String fullname = rs.getString("FullName");
-        String email = rs.getString("email");
-        String role = rs.getString("role");
-%>
-        <tr>
-            <td><%= Id %></td>
-            <td><%= fullname %></td>
-            <td><%= email %></td>
-            <td><%= role %></td>
-            <td>
-             <a href="editUers.jsp?userID=<%= Id %>&fullname=<%= fullname %>&email=<%= email %>&role=<%= role %>">   <button class="reply-button">Edit</button></a>
-             <a href="deleteUser.jsp?Id=<%= Id %>"><button class="delete-button">Delete</button></a>
-            </td>
-        </tr>
-<% 
-    }
-   } catch (Exception e) {
-    e.printStackTrace();
-   }
-%>
-           
-        </table>
-       <a href="addUser.jsp">Add User</a> 
+      <form action="updateUser" method="post">
+        <div class="form-group">
+                <h3>Update User</h3>
+                <hr>
+               
+            </div>
+            <div class="form-group">
+                <label for="Application" style="color:black;" >User ID</label>
+                <input type="number" class="form-control" name="userID" id="Id"  value="<%= request.getParameter("userID") %>" readonly>
+            </div>
+            <div class="form-group">
+                <label for="review"  >Full Name</label>
+                <input type="text" class="form-control" name="fullname" id="review"  value="<%= request.getParameter("fullname") %>" style="border:1px solid black;" >
+            </div>
+             <div class="form-group">
+                <label for="review"  >Email</label>
+                <input type="text" class="form-control" name="email" id="review"  value="<%= request.getParameter("email") %>" style="border:1px solid black;" >
+            </div>
+              <div class="form-group">
+                <label for="review"  >Role</label>
+                <input type="text" class="form-control" name="role" id="review"  value="<%= request.getParameter("role") %>" style="border:1px solid black;" >
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Update Now</button>
+        </form>
+    </div>
+      
+      
     </div>
   
   

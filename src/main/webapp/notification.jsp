@@ -137,15 +137,15 @@ cursor: pointer;
 
        <div class="nav2">
         <div class="up"> 
-        <div class="rightbar"> <label for="">DevLearn ADMINDashboard</label></div> 
+        <div class="rightbar"> <label for="">DevLearn UserDashboard</label></div> 
         <div class="rightbar"> <label for=""><a href="index.jsp">Logout</a></label></div> 
         </div>
  <div class="hed">
  <div class="leftBody" style="width: 20%;height: 90vh;background-color: #e6e6e6;">
  
  <ul>
- <li><a href="admin.jsp">Users</a></li>
- <li><a href="applicant.jsp">Applicants</a></li>
+ <li><a href="userDashboard.jsp">Apply</a></li>
+ <li><a href="notification.jsp">Notification</a></li>
  </ul>
  
  </div>
@@ -162,7 +162,7 @@ cursor: pointer;
                 <th>Course</th>
 
                 <th>Review</th>
-                 <th>Actions</th>
+   
             </tr>
    
            <%
@@ -189,10 +189,7 @@ try {
             <td><%= course %></td>
      
             <td><%= review %></td>
-            <td>
-               <a href="editApplicant.jsp?Id=<%= Id %>&review=<%= review %>"> <button class="reply-button">Reply</button></a>
-                  <a href="deleteApplicant.jsp?Id=<%= Id %>"><button class="delete-button">Delete</button></a>
-            </td>
+            
         </tr>
 <% 
     }

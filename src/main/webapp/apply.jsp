@@ -107,7 +107,7 @@
     </ul>
   </div>
 </nav>
-<div class="container mt-5">
+<div class="container">
         <h1>Student Application Form</h1>
         <form action="ApplicantServlet" method="post">
             <div class="mb-3">

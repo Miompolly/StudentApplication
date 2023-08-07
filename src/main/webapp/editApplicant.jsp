@@ -142,7 +142,7 @@ cursor: pointer;
   <div class="rightBody" style="width: 80%;height: 90vh;">
   
   <div class="container">
-      
+      <form action="UpdateApplicant" method="post">
         <div class="form-group">
                 <h3>Reply Applicant</h3>
                 <hr>
