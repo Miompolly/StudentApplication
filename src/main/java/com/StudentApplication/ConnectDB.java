@@ -284,5 +284,31 @@ public class ConnectDB {
 	    }
 	    return message;
 	}
+	public boolean deleteUser(int Id) {
+	    loadDriver();
+	    Connection cnx = getCon();
+	    
+	    String sql = "DELETE FROM users WHERE ID=?";
+	    try {
+	        PreparedStatement stm = cnx.prepareStatement(sql);
+	        stm.setLong(1, Id);
+	        int rowsAffected = stm.executeUpdate();
+	        if (rowsAffected > 0) {
+	            return true; 
+	        }
+	    } catch (SQLException e) {
+	        System.out.println("Failed to delete " + e.getMessage());
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            cnx.close();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
 
+	    return false; 
+	}
+
+	
 }
