@@ -44,7 +44,7 @@ public class ApplicantServlet extends HttpServlet {
 	        ConnectDB db=new ConnectDB();
 	        String rs=db.addApplicant(applicants);
 	        if(rs!=null) {
-	        	response.sendRedirect("signup.jsp");
+	        	response.sendRedirect("userDashboard.jsp");
 	        }else {
 	        	response.sendRedirect("apply.jsp");
 	        }

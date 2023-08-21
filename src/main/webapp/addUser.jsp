@@ -146,7 +146,7 @@ padding: 1rem;}
   <div class="container">
        <div class="signup-form">
     <h2>Add User</h2>
-    <form action="UserServlet" method="post">
+    <form action="addUser2Servlet" method="post">
       <div class="form-group">
         <label for="fullname">Full Name:</label>
         <input type="text" name="fullname" id="fullname" class="form-control" placeholder="Enter User full name" required>

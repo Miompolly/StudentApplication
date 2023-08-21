@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 
 public class ConnectDB {
 
-	String dburl="jdbc:mysql://localhost:3307/ApplicationDB";
+	String dburl="jdbc:mysql://localhost:3306/ApplicationDB";
 	String dbuser="root";
 	String dbpwd="";
 	String dbdriver="com.mysql.cj.jdbc.Driver";
@@ -57,7 +57,7 @@ public class ConnectDB {
 	        int rs = stm.executeUpdate();
 
 	        if (rs > 0) {
-	            JOptionPane.showMessageDialog(null, "Applicant Registered Successfully,Go to signup");
+	            JOptionPane.showMessageDialog(null, "Applicant Registered Successfully,You will get response in 2 days ");
 	        } else {
 	            JOptionPane.showMessageDialog(null, "Applicant Registration Failed");
 	        }

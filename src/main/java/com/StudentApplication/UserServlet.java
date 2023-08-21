@@ -47,9 +47,12 @@ public class UserServlet extends HttpServlet {
 	        db.getCon();
 	        String message = db.addUser(user1);
 if(message!=null) {
+	
 	JOptionPane.showMessageDialog(null,message );
+	response.sendRedirect("index.jsp");
 }else {
 	System.out.println("Failed");
+	response.sendRedirect("signup.jsp");
 }
 	}
 
